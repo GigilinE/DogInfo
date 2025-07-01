@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Template di test semplice -->
+        <template id="test_page" name="Test Page">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="container mt-4">
+                        <!-- Messaggio di successo -->
+                        <t t-if="request.params.get('success')">
+                            <div class="alert alert-success">
+                                Azione completata! Messaggio: <t t-esc="request.params.get('msg', 'N/A')"/>
+                            </div>
+                        </t>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>Pagina di Test</h1>
+                                <p>Ciao <strong t-esc="user_name"/>!</p>
+                                <p t-esc="current_time"/>.</p>
+                                
+                                <h3>Dati di test:</h3>
+                                <ul>
+                                    <t t-foreach="test_data" t-as="item">
+                                        <li><t t-esc="item['nome']"/>: <t t-esc="item['valore']"/></li>
+                                    </t>
+                                </ul>
+                                
+                                <hr/>
+                                
+                                <h3>Form di test:</h3>
+                                <form action="/my-test/action" method="post">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="form-group">
+                                        <label for="message">Inserisci un messaggio:</label>
+                                        <input type="text" name="message" id="message" class="form-control" placeholder="Il tuo messaggio"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Invia</button>
+                                </form>
+                                
+                                <hr/>
+                                
+                                <a href="/my/home" class="btn btn-secondary">Torna al portale</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extend portal account details to include dog fields -->
+        <template id="portal_my_details_dog_fields" inherit_id="portal.portal_my_details" name="Dog Information Fields">
+            <xpath expr="//div[hasclass('row')][last()]" position="after">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="mt-4 mb-3">Informazioni sul tuo cane</h4>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-xl-6">
+                        <label for="x_studio_dog_name">Nome del cane</label>
+                        <input type="text" name="x_studio_dog_name" class="form-control" 
+                               t-att-value="partner.x_studio_dog_name" placeholder="Inserisci il nome del tuo cane"/>
+                    </div>
+                    <div class="form-group col-xl-6">
+                        <label for="x_studio_dog_breed">Razza del cane</label>
+                        <select name="x_studio_dog_breed" class="form-control">
+                            <option value="">Seleziona la razza</option>
+                            <option value="akita" t-att-selected="'selected' if partner.x_studio_dog_breed == 'akita' else None">Akita</option>
+                            <option value="alano" t-att-selected="'selected' if partner.x_studio_dog_breed == 'alano' else None">Alano</option>
+                            <option value="barboncino" t-att-selected="'selected' if partner.x_studio_dog_breed == 'barboncino' else None">Barboncino</option>
+                            <option value="bassethound" t-att-selected="'selected' if partner.x_studio_dog_breed == 'bassethound' else None">Basset Hound</option>
+                            <option value="bassotto" t-att-selected="'selected' if partner.x_studio_dog_breed == 'bassotto' else None">Bassotto</option>
+                            <option value="beagle" t-att-selected="'selected' if partner.x_studio_dog_breed == 'beagle' else None">Beagle</option>
+                            <option value="bergamasco" t-att-selected="'selected' if partner.x_studio_dog_breed == 'bergamasco' else None">Pastore Bergamasco</option>
+                            <option value="bichon" t-att-selected="'selected' if partner.x_studio_dog_breed == 'bichon' else None">Bichon Frisé</option>
+                            <option value="border_collie" t-att-selected="'selected' if partner.x_studio_dog_breed == 'border_collie' else None">Border Collie</option>
+                            <option value="boston_terrier" t-att-selected="'selected' if partner.x_studio_dog_breed == 'boston_terrier' else None">Boston Terrier</option>
+                            <option value="boxer" t-att-selected="'selected' if partner.x_studio_dog_breed == 'boxer' else None">Boxer</option>
+                            <option value="bracco" t-att-selected="'selected' if partner.x_studio_dog_breed == 'bracco' else None">Bracco Italiano</option>
+                            <option value="bulldog_francese" t-att-selected="'selected' if partner.x_studio_dog_breed == 'bulldog_francese' else None">Bulldog Francese</option>
+                            <option value="bulldog_inglese" t-att-selected="'selected' if partner.x_studio_dog_breed == 'bulldog_inglese' else None">Bulldog Inglese</option>
+                            <option value="bull_terrier" t-att-selected="'selected' if partner.x_studio_dog_breed == 'bull_terrier' else None">Bull Terrier</option>
+                            <option value="cane_corso" t-att-selected="'selected' if partner.x_studio_dog_breed == 'cane_corso' else None">Cane Corso</option>
+                            <option value="carlino" t-att-selected="'selected' if partner.x_studio_dog_breed == 'carlino' else None">Carlino</option>
+                            <option value="cavalier" t-att-selected="'selected' if partner.x_studio_dog_breed == 'cavalier' else None">Cavalier King Charles Spaniel</option>
+                            <option value="chihuahua" t-att-selected="'selected' if partner.x_studio_dog_breed == 'chihuahua' else None">Chihuahua</option>
+                            <option value="chow_chow" t-att-selected="'selected' if partner.x_studio_dog_breed == 'chow_chow' else None">Chow Chow</option>
+                            <option value="cocker" t-att-selected="'selected' if partner.x_studio_dog_breed == 'cocker' else None">Cocker Spaniel</option>
+                            <option value="collie" t-att-selected="'selected' if partner.x_studio_dog_breed == 'collie' else None">Collie</option>
+                            <option value="dalmata" t-att-selected="'selected' if partner.x_studio_dog_breed == 'dalmata' else None">Dalmata</option>
+                            <option value="dobermann" t-att-selected="'selected' if partner.x_studio_dog_breed == 'dobermann' else None">Dobermann</option>
+                            <option value="dogo_argentino" t-att-selected="'selected' if partner.x_studio_dog_breed == 'dogo_argentino' else None">Dogo Argentino</option>
+                            <option value="golden_retriever" t-att-selected="'selected' if partner.x_studio_dog_breed == 'golden_retriever' else None">Golden Retriever</option>
+                            <option value="husky" t-att-selected="'selected' if partner.x_studio_dog_breed == 'husky' else None">Siberian Husky</option>
+                            <option value="jack_russell" t-att-selected="'selected' if partner.x_studio_dog_breed == 'jack_russell' else None">Jack Russell Terrier</option>
+                            <option value="labrador" t-att-selected="'selected' if partner.x_studio_dog_breed == 'labrador' else None">Labrador Retriever</option>
+                            <option value="lagotto" t-att-selected="'selected' if partner.x_studio_dog_breed == 'lagotto' else None">Lagotto Romagnolo</option>
+                            <option value="levriero" t-att-selected="'selected' if partner.x_studio_dog_breed == 'levriero' else None">Levriero</option>
+                            <option value="maltese" t-att-selected="'selected' if partner.x_studio_dog_breed == 'maltese' else None">Maltese</option>
+                            <option value="maremmano" t-att-selected="'selected' if partner.x_studio_dog_breed == 'maremmano' else None">Pastore Maremmano</option>
+                            <option value="mastino" t-att-selected="'selected' if partner.x_studio_dog_breed == 'mastino' else None">Mastino Napoletano</option>
+                            <option value="meticcio" t-att-selected="'selected' if partner.x_studio_dog_breed == 'meticcio' else None">Meticcio</option>
+                            <option value="pastore_australiano" t-att-selected="'selected' if partner.x_studio_dog_breed == 'pastore_australiano' else None">Pastore Australiano</option>
+                            <option value="pastore_tedesco" t-att-selected="'selected' if partner.x_studio_dog_breed == 'pastore_tedesco' else None">Pastore Tedesco</option>
+                            <option value="pechinese" t-att-selected="'selected' if partner.x_studio_dog_breed == 'pechinese' else None">Pechinese</option>
+                            <option value="pinscher" t-att-selected="'selected' if partner.x_studio_dog_breed == 'pinscher' else None">Pinscher</option>
+                            <option value="pitbull" t-att-selected="'selected' if partner.x_studio_dog_breed == 'pitbull' else None">Pitbull</option>
+                            <option value="pointer" t-att-selected="'selected' if partner.x_studio_dog_breed == 'pointer' else None">Pointer</option>
+                            <option value="pomerania" t-att-selected="'selected' if partner.x_studio_dog_breed == 'pomerania' else None">Volpino di Pomerania</option>
+                            <option value="rottweiler" t-att-selected="'selected' if partner.x_studio_dog_breed == 'rottweiler' else None">Rottweiler</option>
+                            <option value="san_bernardo" t-att-selected="'selected' if partner.x_studio_dog_breed == 'san_bernardo' else None">San Bernardo</option>
+                            <option value="schnauzer" t-att-selected="'selected' if partner.x_studio_dog_breed == 'schnauzer' else None">Schnauzer</option>
+                            <option value="setter" t-att-selected="'selected' if partner.x_studio_dog_breed == 'setter' else None">Setter</option>
+                            <option value="shar_pei" t-att-selected="'selected' if partner.x_studio_dog_breed == 'shar_pei' else None">Shar Pei</option>
+                            <option value="shiba_inu" t-att-selected="'selected' if partner.x_studio_dog_breed == 'shiba_inu' else None">Shiba Inu</option>
+                            <option value="shih_tzu" t-att-selected="'selected' if partner.x_studio_dog_breed == 'shih_tzu' else None">Shih Tzu</option>
+                            <option value="spinone" t-att-selected="'selected' if partner.x_studio_dog_breed == 'spinone' else None">Spinone Italiano</option>
+                            <option value="springer_spaniel" t-att-selected="'selected' if partner.x_studio_dog_breed == 'springer_spaniel' else None">Springer Spaniel</option>
+                            <option value="staffordshire" t-att-selected="'selected' if partner.x_studio_dog_breed == 'staffordshire' else None">Staffordshire Bull Terrier</option>
+                            <option value="terranova" t-att-selected="'selected' if partner.x_studio_dog_breed == 'terranova' else None">Terranova</option>
+                            <option value="tibetan_terrier" t-att-selected="'selected' if partner.x_studio_dog_breed == 'tibetan_terrier' else None">Tibetan Terrier</option>
+                            <option value="volpino" t-att-selected="'selected' if partner.x_studio_dog_breed == 'volpino' else None">Volpino Italiano</option>
+                            <option value="weimaraner" t-att-selected="'selected' if partner.x_studio_dog_breed == 'weimaraner' else None">Weimaraner</option>
+                            <option value="west_highland" t-att-selected="'selected' if partner.x_studio_dog_breed == 'west_highland' else None">West Highland White Terrier</option>
+                            <option value="yorkshire" t-att-selected="'selected' if partner.x_studio_dog_breed == 'yorkshire' else None">Yorkshire Terrier</option>
+                            <option value="altro" t-att-selected="'selected' if partner.x_studio_dog_breed == 'altro' else None">Altra razza</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-xl-6">
+                        <label for="x_studio_dog_age">Età del cane (anni)</label>
+                        <input type="number" name="x_studio_dog_age" class="form-control" 
+                               t-att-value="partner.x_studio_dog_age" placeholder="Es: 3" min="0" max="30"/>
+                    </div>
+                    <div class="form-group col-xl-6">
+                        <label for="x_studio_dog_weight">Peso del cane (kg)</label>
+                        <input type="number" name="x_studio_dog_weight" class="form-control" 
+                               t-att-value="partner.x_studio_dog_weight" placeholder="Es: 25.5" min="0" step="0.1"/>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

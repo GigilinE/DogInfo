@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Template per visualizzare i dati del cane -->
+        <template id="portal_my_dog" name="My Dog Information">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <div class="container">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/my/home">Il mio account</a></li>
+                                <li class="breadcrumb-item active">Informazioni del mio cane</li>
+                            </ol>
+                        </div>
+                    </div>
+                <div class="container mt-3">
+                    <!-- Success message -->
+                    <t t-if="request.params.get('success')">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fa fa-check-circle"></i> I dati del tuo cane sono stati aggiornati con successo!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&amp;times;</span>
+                            </button>
+                        </div>
+                    </t>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-paw"></i> Informazioni del mio cane
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <strong>Nome del cane:</strong>
+                                            <p class="text-muted">
+                                                <t t-if="partner.x_studio_dog_name">
+                                                    <t t-esc="partner.x_studio_dog_name"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <em>Non specificato</em>
+                                                </t>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Razza:</strong>
+                                            <p class="text-muted">
+                                                <t t-if="partner.x_studio_dog_breed">
+                                                    <t t-esc="dict(partner._fields['x_studio_dog_breed'].selection).get(partner.x_studio_dog_breed, partner.x_studio_dog_breed)"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <em>Non specificata</em>
+                                                </t>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <strong>Età (anni):</strong>
+                                            <p class="text-muted">
+                                                <t t-if="partner.x_studio_dog_age">
+                                                    <t t-esc="partner.x_studio_dog_age"/> anni
+                                                </t>
+                                                <t t-else="">
+                                                    <em>Non specificata</em>
+                                                </t>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Peso (kg):</strong>
+                                            <p class="text-muted">
+                                                <t t-if="partner.x_studio_dog_weight">
+                                                    <t t-esc="partner.x_studio_dog_weight"/> kg
+                                                </t>
+                                                <t t-else="">
+                                                    <em>Non specificato</em>
+                                                </t>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <a href="/my-dog/edit" class="btn btn-primary">
+                                            <i class="fa fa-pencil"></i> Modifica informazioni
+                                        </a>
+                                        <a href="/my/home" class="btn btn-secondary">
+                                            <i class="fa fa-arrow-left"></i> Torna al portale
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </t>
+        </template>
+
+        <!-- Template per modificare i dati del cane -->
+        <template id="portal_my_dog_edit" name="Edit Dog Information">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <div class="container">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/my/home">Il mio account</a></li>
+                                <li class="breadcrumb-item"><a href="/my-dog">Informazioni del mio cane</a></li>
+                                <li class="breadcrumb-item active">Modifica</li>
+                            </ol>
+                        </div>
+                    </div>
+                <div class="container mt-3">
+                    <!-- Error message -->
+                    <t t-if="request.params.get('error')">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fa fa-exclamation-circle"></i> Si è verificato un errore durante il salvataggio. Riprova.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&amp;times;</span>
+                            </button>
+                        </div>
+                    </t>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-paw"></i> Modifica informazioni del cane
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <form action="/my-dog/save" method="post">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="x_studio_dog_name">Nome del cane</label>
+                                                <input type="text" 
+                                                       name="x_studio_dog_name" 
+                                                       id="x_studio_dog_name"
+                                                       class="form-control" 
+                                                       t-att-value="partner.x_studio_dog_name or ''"
+                                                       placeholder="Es: Fido"/>
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="x_studio_dog_breed">Razza</label>
+                                                <select name="x_studio_dog_breed" id="x_studio_dog_breed" class="form-control">
+                                                    <option value="">-- Seleziona una razza --</option>
+                                                    <t t-foreach="partner._fields['x_studio_dog_breed'].selection" t-as="breed">
+                                                        <option t-att-value="breed[0]" 
+                                                                t-att-selected="'selected' if partner.x_studio_dog_breed == breed[0] else None">
+                                                            <t t-esc="breed[1]"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="x_studio_dog_age">Età (anni)</label>
+                                                <input type="number" 
+                                                       name="x_studio_dog_age" 
+                                                       id="x_studio_dog_age"
+                                                       class="form-control" 
+                                                       t-att-value="partner.x_studio_dog_age or ''"
+                                                       placeholder="Es: 3"
+                                                       min="0"
+                                                       max="30"/>
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="x_studio_dog_weight">Peso (kg)</label>
+                                                <input type="number" 
+                                                       name="x_studio_dog_weight" 
+                                                       id="x_studio_dog_weight"
+                                                       class="form-control" 
+                                                       t-att-value="partner.x_studio_dog_weight or ''"
+                                                       placeholder="Es: 25.5"
+                                                       min="0"
+                                                       step="0.1"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-save"></i> Salva modifiche
+                                            </button>
+                                            <a href="/my-dog" class="btn btn-secondary">
+                                                <i class="fa fa-times"></i> Annulla
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </t>
+        </template>
+
+        <!-- Aggiungi il tile nella home del portale -->
+        <template id="portal_my_home_dog" name="Dog info in portal home" 
+                  inherit_id="portal.portal_my_home" priority="100">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/dog_registration_portal/static/img/dog-icon.png'"/>
+                    <t t-set="title">Informazioni del mio cane</t>
+                    <t t-set="url" t-value="'/my-dog'"/>
+                    <t t-set="placeholder_count" t-value="'fa fa-paw'"/>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

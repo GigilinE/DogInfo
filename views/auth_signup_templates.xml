@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extend signup form to include dog fields -->
+        <template id="signup_form_dog_fields" inherit_id="auth_signup.signup" name="Dog Registration Fields">
+            <xpath expr="//button[@type='submit']" position="before">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="mt-3 mb-3">Informazioni sul tuo cane</h4>
+                    </div>
+                </div>
+                
+                <div class="form-group field-dog_name">
+                    <label for="dog_name" class="col-form-label">Nome del cane</label>
+                    <input type="text" name="x_studio_dog_name" id="dog_name" class="form-control" 
+                           t-att-value="x_studio_dog_name" placeholder="Inserisci il nome del tuo cane"/>
+                </div>
+                
+                <div class="form-group field-dog_breed">
+                    <label for="dog_breed" class="col-form-label">Razza del cane</label>
+                    <select name="x_studio_dog_breed" id="dog_breed" class="form-control">
+                        <option value="">Seleziona la razza</option>
+                        <option value="akita">Akita</option>
+                        <option value="alano">Alano</option>
+                        <option value="barboncino">Barboncino</option>
+                        <option value="bassethound">Basset Hound</option>
+                        <option value="bassotto">Bassotto</option>
+                        <option value="beagle">Beagle</option>
+                        <option value="bergamasco">Pastore Bergamasco</option>
+                        <option value="bichon">Bichon Frisé</option>
+                        <option value="border_collie">Border Collie</option>
+                        <option value="boston_terrier">Boston Terrier</option>
+                        <option value="boxer">Boxer</option>
+                        <option value="bracco">Bracco Italiano</option>
+                        <option value="bulldog_francese">Bulldog Francese</option>
+                        <option value="bulldog_inglese">Bulldog Inglese</option>
+                        <option value="bull_terrier">Bull Terrier</option>
+                        <option value="cane_corso">Cane Corso</option>
+                        <option value="carlino">Carlino</option>
+                        <option value="cavalier">Cavalier King Charles Spaniel</option>
+                        <option value="chihuahua">Chihuahua</option>
+                        <option value="chow_chow">Chow Chow</option>
+                        <option value="cocker">Cocker Spaniel</option>
+                        <option value="collie">Collie</option>
+                        <option value="dalmata">Dalmata</option>
+                        <option value="dobermann">Dobermann</option>
+                        <option value="dogo_argentino">Dogo Argentino</option>
+                        <option value="golden_retriever">Golden Retriever</option>
+                        <option value="husky">Siberian Husky</option>
+                        <option value="jack_russell">Jack Russell Terrier</option>
+                        <option value="labrador">Labrador Retriever</option>
+                        <option value="lagotto">Lagotto Romagnolo</option>
+                        <option value="levriero">Levriero</option>
+                        <option value="maltese">Maltese</option>
+                        <option value="maremmano">Pastore Maremmano</option>
+                        <option value="mastino">Mastino Napoletano</option>
+                        <option value="meticcio">Meticcio</option>
+                        <option value="pastore_australiano">Pastore Australiano</option>
+                        <option value="pastore_tedesco">Pastore Tedesco</option>
+                        <option value="pechinese">Pechinese</option>
+                        <option value="pinscher">Pinscher</option>
+                        <option value="pitbull">Pitbull</option>
+                        <option value="pointer">Pointer</option>
+                        <option value="pomerania">Volpino di Pomerania</option>
+                        <option value="rottweiler">Rottweiler</option>
+                        <option value="san_bernardo">San Bernardo</option>
+                        <option value="schnauzer">Schnauzer</option>
+                        <option value="setter">Setter</option>
+                        <option value="shar_pei">Shar Pei</option>
+                        <option value="shiba_inu">Shiba Inu</option>
+                        <option value="shih_tzu">Shih Tzu</option>
+                        <option value="spinone">Spinone Italiano</option>
+                        <option value="springer_spaniel">Springer Spaniel</option>
+                        <option value="staffordshire">Staffordshire Bull Terrier</option>
+                        <option value="terranova">Terranova</option>
+                        <option value="tibetan_terrier">Tibetan Terrier</option>
+                        <option value="volpino">Volpino Italiano</option>
+                        <option value="weimaraner">Weimaraner</option>
+                        <option value="west_highland">West Highland White Terrier</option>
+                        <option value="yorkshire">Yorkshire Terrier</option>
+                        <option value="altro">Altra razza</option>
+                    </select>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group field-dog_age">
+                            <label for="dog_age" class="col-form-label">Età del cane (anni)</label>
+                            <input type="number" name="x_studio_dog_age" id="dog_age" class="form-control" 
+                                   t-att-value="x_studio_dog_age" placeholder="Es: 3" min="0" max="30"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group field-dog_weight">
+                            <label for="dog_weight" class="col-form-label">Peso del cane (kg)</label>
+                            <input type="number" name="x_studio_dog_weight" id="dog_weight" class="form-control" 
+                                   t-att-value="x_studio_dog_weight" placeholder="Es: 25.5" min="0" step="0.1"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
