@@ -12,15 +12,15 @@ class AuthSignupHomeExtended(AuthSignupHome):
         
         if request.httprequest.method == 'POST':
             # Add dog fields to qcontext
-            dog_fields = ['dog_name', 'dog_breed', 'dog_age', 'dog_weight']
+            dog_fields = ['x_studio_dog_name', 'x_studio_dog_breed', 'x_studio_dog_age', 'x_studio_dog_weight']
             for field in dog_fields:
                 if kw.get(field):
-                    if field == 'dog_age':
+                    if field == 'x_studio_dog_age':
                         try:
                             qcontext[field] = int(kw.get(field)) if kw.get(field) else None
                         except (ValueError, TypeError):
                             qcontext[field] = None
-                    elif field == 'dog_weight':
+                    elif field == 'x_studio_dog_weight':
                         try:
                             qcontext[field] = float(kw.get(field)) if kw.get(field) else None
                         except (ValueError, TypeError):
@@ -34,7 +34,7 @@ class AuthSignupHomeExtended(AuthSignupHome):
         values = {key: qcontext.get(key) for key in ('login', 'name', 'password')}
         
         # Add dog fields to values
-        dog_fields = ['dog_name', 'dog_breed', 'dog_age', 'dog_weight']
+        dog_fields = ['x_studio_dog_name', 'x_studio_dog_breed', 'x_studio_dog_age', 'x_studio_dog_weight']
         for field in dog_fields:
             if qcontext.get(field):
                 values[field] = qcontext.get(field)

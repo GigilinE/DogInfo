@@ -37,8 +37,8 @@
                                         <div class="col-md-6">
                                             <strong>Nome del cane:</strong>
                                             <p class="text-muted">
-                                                <t t-if="partner.dog_name">
-                                                    <t t-esc="partner.dog_name"/>
+                                                <t t-if="partner.x_studio_dog_name">
+                                                    <t t-esc="partner.x_studio_dog_name"/>
                                                 </t>
                                                 <t t-else="">
                                                     <em>Non specificato</em>
@@ -48,8 +48,8 @@
                                         <div class="col-md-6">
                                             <strong>Razza:</strong>
                                             <p class="text-muted">
-                                                <t t-if="partner.dog_breed">
-                                                    <t t-esc="dict(partner._fields['dog_breed'].selection).get(partner.dog_breed, partner.dog_breed)"/>
+                                                <t t-if="partner.x_studio_dog_breed">
+                                                    <t t-esc="dict(partner._fields['x_studio_dog_breed'].selection).get(partner.x_studio_dog_breed, partner.x_studio_dog_breed)"/>
                                                 </t>
                                                 <t t-else="">
                                                     <em>Non specificata</em>
@@ -61,8 +61,8 @@
                                         <div class="col-md-6">
                                             <strong>Età (anni):</strong>
                                             <p class="text-muted">
-                                                <t t-if="partner.dog_age">
-                                                    <t t-esc="partner.dog_age"/> anni
+                                                <t t-if="partner.x_studio_dog_age">
+                                                    <t t-esc="partner.x_studio_dog_age"/> anni
                                                 </t>
                                                 <t t-else="">
                                                     <em>Non specificata</em>
@@ -72,8 +72,8 @@
                                         <div class="col-md-6">
                                             <strong>Peso (kg):</strong>
                                             <p class="text-muted">
-                                                <t t-if="partner.dog_weight">
-                                                    <t t-esc="partner.dog_weight"/> kg
+                                                <t t-if="partner.x_studio_dog_weight">
+                                                    <t t-esc="partner.x_studio_dog_weight"/> kg
                                                 </t>
                                                 <t t-else="">
                                                     <em>Non specificato</em>
@@ -136,21 +136,21 @@
                                         
                                         <div class="row">
                                             <div class="col-md-6 form-group">
-                                                <label for="dog_name">Nome del cane</label>
+                                                <label for="x_studio_dog_name">Nome del cane</label>
                                                 <input type="text" 
-                                                       name="dog_name" 
-                                                       id="dog_name"
+                                                       name="x_studio_dog_name" 
+                                                       id="x_studio_dog_name"
                                                        class="form-control" 
-                                                       t-att-value="partner.dog_name or ''"
+                                                       t-att-value="partner.x_studio_dog_name or ''"
                                                        placeholder="Es: Fido"/>
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="dog_breed">Razza</label>
-                                                <select name="dog_breed" id="dog_breed" class="form-control">
+                                                <label for="x_studio_dog_breed">Razza</label>
+                                                <select name="x_studio_dog_breed" id="x_studio_dog_breed" class="form-control">
                                                     <option value="">-- Seleziona una razza --</option>
-                                                    <t t-foreach="partner._fields['dog_breed'].selection" t-as="breed">
+                                                    <t t-foreach="partner._fields['x_studio_dog_breed'].selection" t-as="breed">
                                                         <option t-att-value="breed[0]" 
-                                                                t-att-selected="'selected' if partner.dog_breed == breed[0] else None">
+                                                                t-att-selected="'selected' if partner.x_studio_dog_breed == breed[0] else None">
                                                             <t t-esc="breed[1]"/>
                                                         </option>
                                                     </t>
@@ -160,23 +160,23 @@
                                         
                                         <div class="row">
                                             <div class="col-md-6 form-group">
-                                                <label for="dog_age">Età (anni)</label>
+                                                <label for="x_studio_dog_age">Età (anni)</label>
                                                 <input type="number" 
-                                                       name="dog_age" 
-                                                       id="dog_age"
+                                                       name="x_studio_dog_age" 
+                                                       id="x_studio_dog_age"
                                                        class="form-control" 
-                                                       t-att-value="partner.dog_age or ''"
+                                                       t-att-value="partner.x_studio_dog_age or ''"
                                                        placeholder="Es: 3"
                                                        min="0"
                                                        max="30"/>
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="dog_weight">Peso (kg)</label>
+                                                <label for="x_studio_dog_weight">Peso (kg)</label>
                                                 <input type="number" 
-                                                       name="dog_weight" 
-                                                       id="dog_weight"
+                                                       name="x_studio_dog_weight" 
+                                                       id="x_studio_dog_weight"
                                                        class="form-control" 
-                                                       t-att-value="partner.dog_weight or ''"
+                                                       t-att-value="partner.x_studio_dog_weight or ''"
                                                        placeholder="Es: 25.5"
                                                        min="0"
                                                        step="0.1"/>

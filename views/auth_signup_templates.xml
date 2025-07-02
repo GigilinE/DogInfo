@@ -10,15 +10,15 @@
                     </div>
                 </div>
                 
-                <div class="form-group field-dog_name">
-                    <label for="dog_name" class="col-form-label">Nome del cane</label>
-                    <input type="text" name="dog_name" id="dog_name" class="form-control" 
-                           t-att-value="dog_name" placeholder="Inserisci il nome del tuo cane"/>
+                <div class="form-group field-x_studio_dog_name">
+                    <label for="x_studio_dog_name" class="col-form-label">Nome del cane</label>
+                    <input type="text" name="x_studio_dog_name" id="x_studio_dog_name" class="form-control" 
+                           t-att-value="x_studio_dog_name" placeholder="Inserisci il nome del tuo cane"/>
                 </div>
                 
-                <div class="form-group field-dog_breed">
-                    <label for="dog_breed" class="col-form-label">Razza del cane</label>
-                    <select name="dog_breed" id="dog_breed" class="form-control">
+                <div class="form-group field-x_studio_dog_breed">
+                    <label for="x_studio_dog_breed" class="col-form-label">Razza del cane</label>
+                    <select name="x_studio_dog_breed" id="x_studio_dog_breed" class="form-control">
                         <option value="">Seleziona la razza</option>
                         <option value="akita">Akita</option>
                         <option value="alano">Alano</option>
@@ -84,17 +84,17 @@
                 
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="form-group field-dog_age">
-                            <label for="dog_age" class="col-form-label">Età del cane (anni)</label>
-                            <input type="number" name="dog_age" id="dog_age" class="form-control" 
-                                   t-att-value="dog_age" placeholder="Es: 3" min="0" max="30"/>
+                        <div class="form-group field-x_studio_dog_age">
+                            <label for="x_studio_dog_age" class="col-form-label">Età del cane (anni)</label>
+                            <input type="number" name="x_studio_dog_age" id="x_studio_dog_age" class="form-control" 
+                                   t-att-value="x_studio_dog_age" placeholder="Es: 3" min="0" max="30"/>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group field-dog_weight">
-                            <label for="dog_weight" class="col-form-label">Peso del cane (kg)</label>
-                            <input type="number" name="dog_weight" id="dog_weight" class="form-control" 
-                                   t-att-value="dog_weight" placeholder="Es: 25.5" min="0" step="0.1"/>
+                        <div class="form-group field-x_studio_dog_weight">
+                            <label for="x_studio_dog_weight" class="col-form-label">Peso del cane (kg)</label>
+                            <input type="number" name="x_studio_dog_weight" id="x_studio_dog_weight" class="form-control" 
+                                   t-att-value="x_studio_dog_weight" placeholder="Es: 25.5" min="0" step="0.1"/>
                         </div>
                     </div>
                 </div>
