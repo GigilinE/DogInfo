@@ -1,6 +1,6 @@
 {
     'name': 'Dog Registration Portal',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.21',
     'category': 'Website',
     'summary': 'Add dog registration fields to portal signup and user profile',
     'description': """
@@ -21,11 +21,6 @@
         'views/dog_portal_templates.xml',
         'views/test_templates.xml',
     ],
-    'assets': {
-        'web.assets_frontend': [
-            'dog_registration_portal/static/src/css/portal_style.css',
-        ],
-    },
     'installable': True,
     'auto_install': False,
     'application': False,

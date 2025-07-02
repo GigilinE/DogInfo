@@ -17,7 +17,7 @@
                             <div class="col-12">
                                 <h1>Pagina di Test</h1>
                                 <p>Ciao <strong t-esc="user_name"/>!</p>
-                                <p t-esc="current_time"/>.</p>
+                                <p><t t-esc="current_time"/>.</p>
                                 
                                 <h3>Dati di test:</h3>
                                 <ul>
