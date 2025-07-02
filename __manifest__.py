@@ -14,6 +14,8 @@
         'portal',
         'website',
         'auth_signup',
+        'web_studio',
+        'studio_customization', 
     ],
     'data': [
         'views/portal_templates.xml',
@@ -24,4 +26,5 @@
     'installable': True,
     'auto_install': False,
     'application': False,
+    'post_init_hook': '_post_init_hook',
 }
