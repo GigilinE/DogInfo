@@ -14,12 +14,12 @@ class CustomerPortalExtended(CustomerPortal):
         values = super()._prepare_portal_layout_values()
         partner = request.env.user.partner_id
         
-        # Aggiungi i campi del cane al contesto
+        # Aggiungi i campi del cane al contesto con i nomi corretti
         values.update({
-            'x_studio_dog_name': partner.x_studio_dog_name if hasattr(partner, 'x_studio_dog_name') else '',
-            'x_studio_dog_breed': partner.x_studio_dog_breed if hasattr(partner, 'x_studio_dog_breed') else '',
-            'x_studio_dog_age': partner.x_studio_dog_age if hasattr(partner, 'x_studio_dog_age') else 0,
-            'x_studio_dog_weight': partner.x_studio_dog_weight if hasattr(partner, 'x_studio_dog_weight') else 0.0,
+            'dog_name': partner.dog_name if hasattr(partner, 'dog_name') else '',
+            'dog_breed': partner.dog_breed if hasattr(partner, 'dog_breed') else '',
+            'dog_age': partner.dog_age if hasattr(partner, 'dog_age') else 0,
+            'dog_weight': partner.dog_weight if hasattr(partner, 'dog_weight') else 0.0,
         })
         return values
 
@@ -35,8 +35,8 @@ class CustomerPortalExtended(CustomerPortal):
             dog_fields = {}
             standard_post = post.copy()
             
-            # Estrai i campi dog se esistono
-            for field_name in ['x_studio_dog_name', 'x_studio_dog_breed', 'x_studio_dog_age', 'x_studio_dog_weight']:
+            # Estrai i campi dog se esistono (con i nomi corretti)
+            for field_name in ['dog_name', 'dog_breed', 'dog_age', 'dog_weight']:
                 if field_name in post and hasattr(partner, field_name):
                     dog_fields[field_name] = standard_post.pop(field_name)
             
@@ -53,23 +53,23 @@ class CustomerPortalExtended(CustomerPortal):
             if dog_fields:
                 update_values = {}
                 
-                if 'x_studio_dog_name' in dog_fields:
-                    update_values['x_studio_dog_name'] = dog_fields['x_studio_dog_name'] or False
+                if 'dog_name' in dog_fields:
+                    update_values['dog_name'] = dog_fields['dog_name'] or False
                 
-                if 'x_studio_dog_breed' in dog_fields:
-                    update_values['x_studio_dog_breed'] = dog_fields['x_studio_dog_breed'] or False
+                if 'dog_breed' in dog_fields:
+                    update_values['dog_breed'] = dog_fields['dog_breed'] or False
                 
-                if 'x_studio_dog_age' in dog_fields:
+                if 'dog_age' in dog_fields:
                     try:
-                        update_values['x_studio_dog_age'] = int(dog_fields['x_studio_dog_age']) if dog_fields['x_studio_dog_age'] else False
+                        update_values['dog_age'] = int(dog_fields['dog_age']) if dog_fields['dog_age'] else False
                     except ValueError:
-                        update_values['x_studio_dog_age'] = False
+                        update_values['dog_age'] = False
                 
-                if 'x_studio_dog_weight' in dog_fields:
+                if 'dog_weight' in dog_fields:
                     try:
-                        update_values['x_studio_dog_weight'] = float(dog_fields['x_studio_dog_weight']) if dog_fields['x_studio_dog_weight'] else False
+                        update_values['dog_weight'] = float(dog_fields['dog_weight']) if dog_fields['dog_weight'] else False
                     except ValueError:
-                        update_values['x_studio_dog_weight'] = False
+                        update_values['dog_weight'] = False
                 
                 # Aggiorna il partner con i campi dog
                 if update_values:
