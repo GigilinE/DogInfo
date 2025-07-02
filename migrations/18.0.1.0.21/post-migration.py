@@ -8,7 +8,7 @@ def migrate(cr, version):
         SELECT column_name 
         FROM information_schema.columns 
         WHERE table_name = 'res_partner' 
-        AND column_name IN ('x_studio_dog_name', 'x_studio_dog_breed', 'x_studio_dog_age', 'x_studio_dog_weight')
+        AND column_name IN ('dog_name', 'dog_breed', 'x_studio_dog_age', 'x_studio_dog_weight')
     """)
     
     existing_fields = [row[0] for row in cr.fetchall()]
@@ -16,8 +16,8 @@ def migrate(cr, version):
     if existing_fields:
         # Copy data from old fields to new fields
         field_mapping = {
-            'x_studio_dog_name': 'dog_name',
-            'x_studio_dog_breed': 'dog_breed',
+            'dog_name': 'dog_name',
+            'dog_breed': 'dog_breed',
             'x_studio_dog_age': 'dog_age',
             'x_studio_dog_weight': 'dog_weight'
         }

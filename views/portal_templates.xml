@@ -14,14 +14,14 @@
                     <div class="row">
                         <div class="form-group col-xl-6">
                             <label for="dog_name">Nome del cane</label>
-                            <input type="text" name="x_studio_dog_name" class="form-control" 
-                                   t-attf-value="#{x_studio_dog_name or ''}" placeholder="Inserisci il nome del tuo cane"/>
+                            <input type="text" name="dog_name" class="form-control" 
+                                   t-attf-value="#{dog_name or ''}" placeholder="Inserisci il nome del tuo cane"/>
                         </div>
                         <div class="form-group col-xl-6">
                             <label for="dog_breed">Razza del cane</label>
-                            <select name="x_studio_dog_breed" class="form-control">
+                            <select name="dog_breed" class="form-control">
                                 <option value="">Seleziona la razza</option>
-                                <option value="akita" t-att-selected="x_studio_dog_breed == 'akita'">Akita</option>
+                                <option value="akita" t-att-selected="dog_breed == 'akita'">Akita</option>
                                 <option value="alano" t-att-selected="dog_breed == 'alano'">Alano</option>
                                 <option value="barboncino" t-att-selected="dog_breed == 'barboncino'">Barboncino</option>
                                 <option value="bassethound" t-att-selected="dog_breed == 'bassethound'">Basset Hound</option>
