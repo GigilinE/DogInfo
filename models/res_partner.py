@@ -4,12 +4,12 @@ from odoo import models, fields
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    x_studio_dog_name = fields.Char(
+    dog_name = fields.Char(
         string='Nome del cane',
         help='Nome del cane del contatto'
     )
     
-    x_studio_dog_breed = fields.Selection([
+    dog_breed = fields.Selection([
         ('akita', 'Akita'),
         ('alano', 'Alano'),
         ('barboncino', 'Barboncino'),
@@ -71,12 +71,12 @@ class ResPartner(models.Model):
         ('altro', 'Altra razza')
     ], string='Razza del cane', help='Razza del cane del contatto')
     
-    x_studio_dog_age = fields.Integer(
+    dog_age = fields.Integer(
         string='Età del cane (anni)',
         help='Età del cane in anni'
     )
     
-    x_studio_dog_weight = fields.Float(
+    dog_weight = fields.Float(
         string='Peso del cane (kg)',
         help='Peso del cane in chilogrammi',
         digits=(8, 2)

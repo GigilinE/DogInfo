@@ -4,12 +4,12 @@ from odoo import models, fields, api
 class ResUsers(models.Model):
     _inherit = 'res.users'
 
-    x_studio_dog_name = fields.Char(
+    dog_name = fields.Char(
         string='Nome del cane',
         help='Nome del cane dell\'utente'
     )
     
-    x_studio_dog_breed = fields.Selection([
+    dog_breed = fields.Selection([
         ('akita', 'Akita'),
         ('alano', 'Alano'),
         ('barboncino', 'Barboncino'),
@@ -71,12 +71,12 @@ class ResUsers(models.Model):
         ('altro', 'Altra razza')
     ], string='Razza del cane', help='Razza del cane dell\'utente')
     
-    x_studio_dog_age = fields.Integer(
+    dog_age = fields.Integer(
         string='Età del cane (anni)',
         help='Età del cane in anni'
     )
     
-    x_studio_dog_weight = fields.Float(
+    dog_weight = fields.Float(
         string='Peso del cane (kg)',
         help='Peso del cane in chilogrammi',
         digits=(8, 2)
@@ -87,14 +87,14 @@ class ResUsers(models.Model):
         user = super(ResUsers, self).create(vals)
         if user.partner_id:
             partner_vals = {}
-            if 'x_studio_dog_name' in vals:
-                partner_vals['x_studio_dog_name'] = vals['x_studio_dog_name']
-            if 'x_studio_dog_breed' in vals:
-                partner_vals['x_studio_dog_breed'] = vals['x_studio_dog_breed']
-            if 'x_studio_dog_age' in vals:
-                partner_vals['x_studio_dog_age'] = vals['x_studio_dog_age']
-            if 'x_studio_dog_weight' in vals:
-                partner_vals['x_studio_dog_weight'] = vals['x_studio_dog_weight']
+            if 'dog_name' in vals:
+                partner_vals['dog_name'] = vals['dog_name']
+            if 'dog_breed' in vals:
+                partner_vals['dog_breed'] = vals['dog_breed']
+            if 'dog_age' in vals:
+                partner_vals['dog_age'] = vals['dog_age']
+            if 'dog_weight' in vals:
+                partner_vals['dog_weight'] = vals['dog_weight']
             
             if partner_vals:
                 user.partner_id.write(partner_vals)
@@ -105,14 +105,14 @@ class ResUsers(models.Model):
         res = super(ResUsers, self).write(vals)
         
         partner_vals = {}
-        if 'x_studio_dog_name' in vals:
-            partner_vals['x_studio_dog_name'] = vals['x_studio_dog_name']
-        if 'x_studio_dog_breed' in vals:
-            partner_vals['x_studio_dog_breed'] = vals['x_studio_dog_breed']
-        if 'x_studio_dog_age' in vals:
-            partner_vals['x_studio_dog_age'] = vals['x_studio_dog_age']
-        if 'x_studio_dog_weight' in vals:
-            partner_vals['x_studio_dog_weight'] = vals['x_studio_dog_weight']
+        if 'dog_name' in vals:
+            partner_vals['dog_name'] = vals['dog_name']
+        if 'dog_breed' in vals:
+            partner_vals['dog_breed'] = vals['dog_breed']
+        if 'dog_age' in vals:
+            partner_vals['dog_age'] = vals['dog_age']
+        if 'dog_weight' in vals:
+            partner_vals['dog_weight'] = vals['dog_weight']
         
         if partner_vals:
             for user in self:

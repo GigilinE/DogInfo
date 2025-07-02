@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 class CustomerPortalExtended(CustomerPortal):
     
     OPTIONAL_BILLING_FIELDS = CustomerPortal.OPTIONAL_BILLING_FIELDS + [
-        'x_studio_dog_name', 'x_studio_dog_breed', 'x_studio_dog_age', 'x_studio_dog_weight'
+        'dog_name', 'dog_breed', 'dog_age', 'dog_weight'
     ]
     
     @http.route(['/my/account'], type='http', auth='user', website=True)
@@ -34,28 +34,28 @@ class CustomerPortalExtended(CustomerPortal):
                 values_to_update.update({key: post[key] for key in self.OPTIONAL_BILLING_FIELDS if key in post})
                 
                 # Gestione speciale per i campi numerici del cane
-                if 'x_studio_dog_age' in values_to_update:
+                if 'dog_age' in values_to_update:
                     try:
-                        age_value = values_to_update['x_studio_dog_age']
+                        age_value = values_to_update['dog_age']
                         if age_value and age_value.strip():
-                            values_to_update['x_studio_dog_age'] = int(age_value)
+                            values_to_update['dog_age'] = int(age_value)
                         else:
-                            values_to_update['x_studio_dog_age'] = False
+                            values_to_update['dog_age'] = False
                     except (ValueError, TypeError):
-                        values_to_update['x_studio_dog_age'] = False
+                        values_to_update['dog_age'] = False
                 
-                if 'x_studio_dog_weight' in values_to_update:
+                if 'dog_weight' in values_to_update:
                     try:
-                        weight_value = values_to_update['x_studio_dog_weight']
+                        weight_value = values_to_update['dog_weight']
                         if weight_value and weight_value.strip():
-                            values_to_update['x_studio_dog_weight'] = float(weight_value)
+                            values_to_update['dog_weight'] = float(weight_value)
                         else:
-                            values_to_update['x_studio_dog_weight'] = False
+                            values_to_update['dog_weight'] = False
                     except (ValueError, TypeError):
-                        values_to_update['x_studio_dog_weight'] = False
+                        values_to_update['dog_weight'] = False
                 
                 # Filtra i valori vuoti
-                for field in ['x_studio_dog_name', 'x_studio_dog_breed']:
+                for field in ['dog_name', 'dog_breed']:
                     if field in values_to_update and values_to_update[field] == '':
                         values_to_update[field] = False
                 
@@ -78,10 +78,10 @@ class CustomerPortalExtended(CustomerPortal):
             'redirect': redirect,
             'page_name': 'my_details',
             # Aggiungi esplicitamente i valori dei campi del cane
-            'x_studio_dog_name': partner.x_studio_dog_name or '',
-            'x_studio_dog_breed': partner.x_studio_dog_breed or '',
-            'x_studio_dog_age': partner.x_studio_dog_age or '',
-            'x_studio_dog_weight': partner.x_studio_dog_weight or '',
+            'dog_name': partner.dog_name or '',
+            'dog_breed': partner.dog_breed or '',
+            'dog_age': partner.dog_age or '',
+            'dog_weight': partner.dog_weight or '',
         })
 
         response = request.render("portal.portal_my_details", values)
@@ -94,27 +94,27 @@ class CustomerPortalExtended(CustomerPortal):
         error, error_message = super(CustomerPortalExtended, self).details_form_validate(data)
         
         # Validazione età del cane
-        if 'x_studio_dog_age' in data and data['x_studio_dog_age']:
+        if 'dog_age' in data and data['dog_age']:
             try:
-                age = int(data['x_studio_dog_age'])
+                age = int(data['dog_age'])
                 if age < 0 or age > 30:
-                    error['x_studio_dog_age'] = 'wrong'
+                    error['dog_age'] = 'wrong'
                     error_message.append(_('L\'età del cane deve essere tra 0 e 30 anni.'))
             except (ValueError, TypeError):
-                if data['x_studio_dog_age'].strip():  # Solo se non è vuoto
-                    error['x_studio_dog_age'] = 'wrong'
+                if data['dog_age'].strip():  # Solo se non è vuoto
+                    error['dog_age'] = 'wrong'
                     error_message.append(_('L\'età del cane deve essere un numero intero.'))
         
         # Validazione peso del cane
-        if 'x_studio_dog_weight' in data and data['x_studio_dog_weight']:
+        if 'dog_weight' in data and data['dog_weight']:
             try:
-                weight = float(data['x_studio_dog_weight'])
+                weight = float(data['dog_weight'])
                 if weight < 0 or weight > 200:
-                    error['x_studio_dog_weight'] = 'wrong'
+                    error['dog_weight'] = 'wrong'
                     error_message.append(_('Il peso del cane deve essere tra 0 e 200 kg.'))
             except (ValueError, TypeError):
-                if data['x_studio_dog_weight'].strip():  # Solo se non è vuoto
-                    error['x_studio_dog_weight'] = 'wrong'
+                if data['dog_weight'].strip():  # Solo se non è vuoto
+                    error['dog_weight'] = 'wrong'
                     error_message.append(_('Il peso del cane deve essere un numero.'))
         
         return error, error_message

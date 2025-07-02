@@ -47,36 +47,36 @@ class DogPortal(http.Controller):
         dog_values = {}
         
         # Process dog name
-        if 'x_studio_dog_name' in post:
-            dog_values['x_studio_dog_name'] = post.get('x_studio_dog_name', '').strip()
+        if 'dog_name' in post:
+            dog_values['dog_name'] = post.get('dog_name', '').strip()
         
         # Process dog breed
-        if 'x_studio_dog_breed' in post:
-            dog_values['x_studio_dog_breed'] = post.get('x_studio_dog_breed', '')
+        if 'dog_breed' in post:
+            dog_values['dog_breed'] = post.get('dog_breed', '')
         
         # Process dog age
-        if 'x_studio_dog_age' in post:
+        if 'dog_age' in post:
             try:
-                age = post.get('x_studio_dog_age', '').strip()
+                age = post.get('dog_age', '').strip()
                 if age:
-                    dog_values['x_studio_dog_age'] = int(age)
+                    dog_values['dog_age'] = int(age)
                 else:
-                    dog_values['x_studio_dog_age'] = False
+                    dog_values['dog_age'] = False
             except (ValueError, TypeError):
-                _logger.warning("Invalid age value: %s", post.get('x_studio_dog_age'))
-                dog_values['x_studio_dog_age'] = False
+                _logger.warning("Invalid age value: %s", post.get('dog_age'))
+                dog_values['dog_age'] = False
         
         # Process dog weight
-        if 'x_studio_dog_weight' in post:
+        if 'dog_weight' in post:
             try:
-                weight = post.get('x_studio_dog_weight', '').strip()
+                weight = post.get('dog_weight', '').strip()
                 if weight:
-                    dog_values['x_studio_dog_weight'] = float(weight)
+                    dog_values['dog_weight'] = float(weight)
                 else:
-                    dog_values['x_studio_dog_weight'] = False
+                    dog_values['dog_weight'] = False
             except (ValueError, TypeError):
-                _logger.warning("Invalid weight value: %s", post.get('x_studio_dog_weight'))
-                dog_values['x_studio_dog_weight'] = False
+                _logger.warning("Invalid weight value: %s", post.get('dog_weight'))
+                dog_values['dog_weight'] = False
         
         # Update partner with dog information
         if dog_values:
